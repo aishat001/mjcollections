@@ -1,0 +1,21 @@
+
+/* .featured { */
+    .banner > a  {
+            width: 24%;      
+        
+    }
+    @media (max-width: 1024px) {
+        .banner > a  {
+            width: 49%;      
+        
+    }
+}
+
+    @media (max-width: 645px) {
+        .banner > a  {
+            width: 100%;      
+        
+    } 
+   }
+   
+/* } */

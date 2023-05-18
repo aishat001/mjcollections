@@ -1,0 +1,10 @@
+POST http://localhost:3000/items HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIxOWZkNTRhNzNlYTNmYzFlZTVlMWYiLCJpYXQiOjE2Nzk5MjUyMDZ9._jtGfaO4mpQWoLKpjOdlU1_JN4DyM-Fdb8qOygTow0w
+
+{
+    "name" : "Atiyah design",
+        "description" : "mo tote bag",
+    "category" : "cross bag",
+    "price" : "2500",
+
+}

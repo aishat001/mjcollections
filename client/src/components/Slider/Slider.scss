@@ -1,0 +1,29 @@
+.slider {
+    padding-top: 50px;
+.slider_container {
+    width: 400vw;
+    display: flex;
+    transition: all 1s ease;
+    overflow: hidden;
+    /* transform: translateX(100vw); */
+
+
+        img {
+            width: 100vw;
+            // height: auto;
+            object-fit: fill;
+            filter: brightness(.6);
+        }
+    
+
+
+
+}
+
+.icon {
+
+    border:1px solid #999;
+}
+}
+
+

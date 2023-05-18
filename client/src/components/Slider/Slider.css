@@ -1,0 +1,25 @@
+.slider {
+  max-height: 600px;
+}
+
+.slider .slider_container {
+  width: 400vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  overflow: hidden;
+  /* transform: translateX(100vw); */
+}
+
+.slider .slider_container img {
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slider .icon {
+  border: 1px solid #999;
+}
+/*# sourceMappingURL=Slider.css.map */

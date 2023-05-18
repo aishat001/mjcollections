@@ -1,0 +1,40 @@
+.card {
+
+    .img {
+        // width: 200px;
+        height: 130px;
+        overflow: hidden;
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            background: white;
+            color: teal;
+            padding: 3px;
+            z-index: 3;
+            font-size: 12px;
+        }
+
+        &:hover {
+                
+            .secondimg {
+                z-index: 2;
+            }
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .mainimg {
+            z-index: 1;
+
+
+        }
+    }
+}

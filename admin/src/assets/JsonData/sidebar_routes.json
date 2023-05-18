@@ -1,0 +1,37 @@
+[
+    {
+        "display_name": "Dashboard",
+        "route": "/",
+        "icon": "bx bxs-user-rectangle"
+    },
+    {
+        "display_name": "Orders",
+        "route": "/Orders",
+        "icon": "bx bxs-buildings"
+    },
+    {
+        "display_name": "Customers",
+        "route": "/Customers",
+        "icon": "bx bxs-buildings"
+    },
+    {
+        "display_name": "Users",
+        "route": "/Users",
+        "icon": "bx bxs-user-account"
+    },
+    {
+        "display_name": "New Entries",
+        "route": "/NewEntries",
+        "icon": "bx bxs-message-alt-add"
+    },
+    {
+        "display_name": "View Products",
+        "route": "/ViewEntries",
+        "icon": "bx bxs-file-find"
+    },
+    {
+        "display_name": "ScoreBoard",
+        "route": "/ScoreBoard",
+        "icon": "bx bx-clipboard"
+    }
+]

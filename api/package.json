@@ -1,0 +1,29 @@
+{
+  "name": "backend_",
+  "version": "1.0.0",
+  "description": "mjcollections api",
+  "main": "app.js",
+  "scripts": {
+    "dev": "env-cmd -f ./config/dev.env nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aishat Waheed",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "flutterwave-node-v3": "^1.1.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "node-forge": "^1.3.1",
+    "stripe": "^11.17.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.22"
+  }
+}

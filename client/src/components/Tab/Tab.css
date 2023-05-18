@@ -1,0 +1,7 @@
+div.tab {
+    border-bottom: 4px solid #0000003b !important;
+}
+
+.tab.active {
+    border-bottom: 4px solid black;
+}
