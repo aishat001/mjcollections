@@ -24,7 +24,7 @@ const Slider = () => {
 
   return (
     <div className='slider relative overflow-x-hidden'>
-        <div className='slider_container w-[400vw] flex' style={{transform: `translateX(-${currentSlide * 100}vw)`}}>
+        <div className='slider_container w-[400vw] h-[100vh] flex' style={{transform: `translateX(-${currentSlide * 100}vw)`}}>
         
         <img src={data[0]} alt="slider" className=''/>
         <img src={data[1]} alt="slider" className=''/>
@@ -33,7 +33,7 @@ const Slider = () => {
         </div>
 
         <div className='absolute top-[50%] left-auto right-auto flex justify-center w-[100%]'>
-        <Link to="/products" className='w-[100px] bg-black text-[12px] text-white py-2 px-3 md:py-5 md:px-8  md:text-3xl'>Shop Now</Link>
+        <Link to="/products" className='w-[100px] md:w-[200px] bg-black text-[12px] text-white py-2 px-3 md:py-5 md:px-8  md:text-3xl'>Shop Now</Link>
 
         </div>
 

@@ -25,7 +25,7 @@ const Navbar = () => {
       }
 
   return (
-    <div className='navbar w-[100vw] h-[50px]  fixed z-10 bg-white top-[0]'>
+    <div className='navbar w-[100vw] h-[50px]  fixed z-10 bg-white top-[0] border-bottom-[inset]'>
         <div className='container flex flex-row justify-between m-auto w-[90%] h-[100%] items-center'>
         <Link to='/' className='logo'>
             <img src="/logo.jpeg" alt="logo" height="100px" width="80px"

@@ -6,7 +6,12 @@ import Item from '../Item/Item';
 
 const Featuredproduct = () => {
     const [selected, setselected] = useState("featured");
+    const [displayedProducts, setDisplayedProducts] = useState(8);
+    const [displayedLatestProducts, setDisplayedLatestProducts] = useState(6);
+
     const { data, loading, error } = useFetch(`/items`)
+
+
     const lists = [
         {
             id: "featured",
@@ -38,6 +43,8 @@ const Featuredproduct = () => {
 
         return diffInDays <= 30; // Show items created within the last 30 days
     });
+    const displayedItems = data.slice(0, displayedProducts);
+    const displayedLatestItems = latestItems.slice(0, displayedLatestProducts);
 
     const getRandomItems = (items, count) => {
         const startIndex = Math.floor(Math.random() * items.length);
@@ -78,7 +85,7 @@ const Featuredproduct = () => {
             <div className='min-h-[250px] flex flex-wrap justify-center  gap-5 mt-14'>
                 {
                     selected === 'featured' && (
-                        loading ? "loading" : data?.map(item => (
+                        loading ? "loading" : displayedItems?.map(item => (
                             <Item item={item} key={item.id} />
                         ))
                     )
@@ -86,7 +93,7 @@ const Featuredproduct = () => {
 
                 {
                     selected === 'latest' && (
-                        loading ? "loading" : latestItems.map(item => (
+                        loading ? "loading" : displayedLatestItems.map(item => (
                             <Item item={item} key={item.id} />
                         ))
                     )

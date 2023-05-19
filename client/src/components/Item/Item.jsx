@@ -12,8 +12,8 @@ const Item = ({ item }) => {
                     {/* {
                 item?.attributes.isNew && <span>New Design</span>
             } */}
-                    <img src={item.img} alt="" className='mainimg' />
-                    <img src="" alt="" className='secondimg' />
+                    <img src={item.img} alt="" className='mainimg bg-[#f0f0f0] rounded-[15px] p-2' />
+                    {/* <img src="" alt="" className='secondimg' /> */}
 
                 </div>
                 <p className='text-base m-0 capitalize'>{item.name}</p>
