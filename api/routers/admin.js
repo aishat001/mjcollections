@@ -3,8 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const isAdmin = require('../middleware/isAdmin');
-const User = require('../models/user');
-const Order = require('../models/order');
+const User = require('../models/User');
+const Order = require('../models/Order');
 
 // Get all users
 router.get('/users', auth, isAdmin, async (req, res) => {

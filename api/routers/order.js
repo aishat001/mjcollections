@@ -1,6 +1,6 @@
 const express = require("express")
 const Flutterwave = require("flutterwave-node-v3")
-const Order = require("../models/order")
+const Order = require("../models/Order")
 const auth = require("../middleware/auth")
 const { verifyTokenAndAuthorization } = require("./verifyToken")
 const stripe = require("stripe")(process.env.STRIPE_KEY);
