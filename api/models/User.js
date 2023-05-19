@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
-const CryptoJS = require('CryptoJS');
+// const CryptoJS = require('CryptoJS');
 const jwt = require('jsonwebtoken');
 
 
