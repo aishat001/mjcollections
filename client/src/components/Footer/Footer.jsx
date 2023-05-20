@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
-        <div className='bg-black text-white text-sm py-5 flex flex-col gap-8 items-center w-[100vw] relative bottom-[0] border-1 px-10'>
-            <div className='socials flex gap-5 justify-start md:justify-center w-[100%] px-5'>
+        <div className='bg-black text-white text-sm py-5 flex flex-col gap-8 items-center w-[100vw] relative bottom-[0] border-1 px-5'>
+            <div className='socials flex gap-5 justify-start md:justify-center w-[100%] '>
                 <Link to=""><Facebook/></Link>
                 <Link to=""><Twitter/></Link>
                 <Link to=""><Instagram/></Link>
@@ -14,8 +14,8 @@ const Footer = () => {
      
             </div>
 
-            <div className='flex flex-wrap justify-start md:justify-evenly gap-3  md:gap-5 w-[100%]'>
-                <div className='flex flex-col p-2'>
+            <div className='flex flex-wrap justify-start md:justify-evenly gap-5  w-[100%]'>
+                <div className='flex flex-col '>
                     <h2 className='font-bold'>Information</h2>
                     <ul>
                         <li><Link to="">About Us</Link></li>
@@ -27,7 +27,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div className='flex flex-col p-2'>
+                <div className='flex flex-col'>
                     <h2 className='font-bold'>Information</h2>
                     <ul>
                         <li><Link to="">About Us</Link></li>
@@ -38,7 +38,7 @@ const Footer = () => {
 
                     </ul>
                 </div>
-                <div className='flex flex-col p-2'>
+                <div className='flex flex-col '>
                     <h2 className='font-bold'>About</h2>
                    <p className='max-w-[200px]'>
                    At MJCollections, we take pride in curating the 
@@ -47,7 +47,7 @@ const Footer = () => {
                    </p>
                 </div>
 
-                <div className='flex flex-col p-3'>
+                <div className='flex flex-col'>
                     <h2 className='font-bold'>Contact</h2>
                     <p className='max-w-[300px]'>
                     OKe Ilewo, <br/>

@@ -1,10 +1,11 @@
 import { ArrowBack, ArrowForward, ArrowForwardIos, ArrowLeft, ArrowRight } from '@mui/icons-material'
 import React, { useState } from 'react'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "./Slider.scss"
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate()
 
     const prevSlide = () => {
         setCurrentSlide(currentSlide === 0 ? 3 : (prev) => prev - 1)
@@ -24,7 +25,7 @@ const Slider = () => {
 
   return (
     <div className='slider relative overflow-x-hidden'>
-        <div className='slider_container w-[400vw] h-[100vh] flex' style={{transform: `translateX(-${currentSlide * 100}vw)`}}>
+        <div className='slider_container w-[400vw] h-[auto] md:h-[100vh] flex' style={{transform: `translateX(-${currentSlide * 100}vw)`}}>
         
         <img src={data[0]} alt="slider" className=''/>
         <img src={data[1]} alt="slider" className=''/>
@@ -33,7 +34,7 @@ const Slider = () => {
         </div>
 
         <div className='absolute top-[50%] left-auto right-auto flex justify-center w-[100%]'>
-        <Link to="/products" className='w-[100px] md:w-[200px] bg-black text-[12px] text-white py-2 px-3 md:py-5 md:px-8  md:text-3xl'>Shop Now</Link>
+        <button onclick={navigate("/products")} className=' bg-black text-[12px] text-white px-4 py-1 sm:px-7 sm:py-3  md:text-[20px]'>Shop Now</button>
 
         </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <div className='p-10 pt-20 md:p-24'>
+        <div className='p-10 px-5 sm:px-[10px] pt-20 '>
             <h1 className='border-1 border-bottom border-black text-4xl text-center'>About</h1><br></br>
             <p>
                 At MJCollections, we take pride in curating the finest collection of totes and backpacks that perfectly blend style, functionality, and quality. Our commitment is to provide our customers with exceptional products that cater to their fashion needs while offering practicality for their everyday lives.
