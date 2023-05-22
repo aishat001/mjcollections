@@ -106,11 +106,6 @@ router.post("/checkout", async (req, res) => {
       success_url: `${process.env.CLIENT_URL}/success/${user.id}`,
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
       client_reference_id: user.id,
-      payment_method_options: {
-        card: {
-          request_three_d_secure: "any",
-        },
-      },
     });
 
     res.status(200).json({ id: session.id });
