@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Item.scss"
 
-const Item = ({ item }) => {
+const Item = ({ item, index }) => {
 
     return (
 
-        <Link to={`/products/${item._id}`}>
+        <Link to={`/products/${item._id}`} data-aos='fade-up' data-aos-delay={index * 500} className='pointer cursor'>
             <div className='card h-[] w-[130px] flex gap-1 flex-col'>
                 <div className='img'>
                     {/* {

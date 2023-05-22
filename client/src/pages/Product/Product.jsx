@@ -53,18 +53,30 @@ const Product = () => {
       ) : (
         <>
           <div className='flex flex-col md:flex-row justify-center gap-10 my-16 px-5 sm:px-5'>
-            <div className='left flex flex-col-reverse sm:flex-row-reverse sm:justify-end md:flex-row justify gap-8'>
-              <div className='images w-[90vw] h-[70px] sm:w-[70px] flex flex-row md:flex-col gap-3  md:m-0'>
+          <div
+  className='left flex flex-col-reverse sm:flex-row-reverse sm:justify-end md:flex-row justify gap-8'
+  data-aos='fade-right'
+  data-aos-duration='800'
+>              <div className='images w-[90vw] h-[70px] sm:w-[70px] flex flex-row md:flex-col gap-3  md:m-0'>
                 <img src={data.img} onClick={() => setSelectedImage(`${data.img}`)} height="70px" width="70px" className='bg-[#f0f0f0] rounded-[15px] p-2'/>
                 {/* <img src="" onClick={() => setSelectedImage("img2")} height="70px" width="70px" /> */}
               </div>
               <div className='w-[280px]  md:w-[350px] lg:w-[400px]  flex  md:m-[unset]'>
-                <img src={data.img} alt="" height="100%" width="100%" className='h-[300px] md:h-[400px] m-auto bg-[#f0f0f0] rounded-[15px] p-2' />
+                <img src={data.img} alt="" height="100%" width="100%" className='h-[300px] md:h-[400px] bg-[#f0f0f0] rounded-[15px] p-2' />
               </div>
             </div>
 
-            <div className='right m-auto md:ml-0 w-[90vw] md:w-[330px] flex flex-col gap-6 items-start'>
-              <h2 className='text-4xl'>{data.name}</h2>
+            <div
+  className='right m-auto md:ml-0 w-[90vw] md:w-[330px] flex flex-col gap-6 items-start'
+  data-aos='fade-left'
+  data-aos-duration='800'
+>            <h2
+  className='text-4xl'
+  data-aos='fade-down'
+  data-aos-anchor-placement='top-bottom'
+>
+  {data.name}
+</h2>
               <span className='inline-flex items'><p>Details:</p> <p className='text-lg ml-5'>{data.description}</p></span>
               <h2 className='text-[26px] font-[500]'>₦{data.price}</h2>
 
@@ -75,10 +87,12 @@ const Product = () => {
               </div>
 
 <div className='flex flex-row gap-5'>
-<button
+{/* <button
                 className='bg text-black w-max py-2 px-3 border border-black'
                 onClick={handleClick}
-              >ADD TO CART</button>               <button className='bg-black text-white w-max py-2 px-3'>Buy now</button>
+              >ADD TO CART</button>          */}
+                    <button className='bg-black text-white w-max py-2 px-3'                 onClick={handleClick}
+>ADD TO CART</button>
 
 </div>
 

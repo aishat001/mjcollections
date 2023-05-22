@@ -14,8 +14,7 @@ import './Checkout.scss';
 const Checkout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY
-  );
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 
   const cart = useSelector((state) => state.cart);
@@ -23,6 +22,7 @@ const Checkout = () => {
   const items = cart.items.map((item) => item.price);
   const [formData, setFormData] = useState(user || {});
   const [errors, setErrors] = useState({});
+
 
   let cartt = [{ cart: cart }];
 
@@ -133,198 +133,158 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="checkout w-[100vw]    flex flex-col gap-5 absolute top-[0] bg-white z-40 pb-28">
-        <h2 className="fixed text-3xl bg-black w-[100vw] p-3 text-white flex justify-between items-center">
-          Checkout
-        </h2>
+    <div className="checkout w-[100vw] flex flex-col gap-5 absolute top-[0] bg-white z-50 h-[100vh] px-7 py-5">
+      <div className="flex justify-between items-center">
+        <Link to="/cart" className="flex items-center cursor-pointer">
+          <ArrowLeft className="mr-2" /> Continue Shopping
+        </Link>
+        <Delete className="cursor-pointer" onClick={handleNavigation} />
+      </div>
 
-        <div className="flex flex-col-reverse md:flex-row gap-10 md:gap-0 px-10 pt-[80px]">
-          <div className="flex-1 py-5 pr-10 border-r-2 ">
-            {!user && (
-              <div className="flex flex-col gap-5 mb-5">
-                <button
-                  className="border border-1 border-black text-black py-2 px-3 max-w-[max-content]"
-                  onClick={handleNavigation}
-                >
-                  <ArrowLeft /> Back
-                </button>
-                <div className="w-[100%] inline-flex gap-4">
-                  <p>Already has an account? </p>
-                  <Link to="/login" className="text-blue underline">
-                    Login
-                  </Link>
-                </div>
-              </div>
-            )}
+      <h2 className="font-bold bold text-2xl mb-2" data-aos="fade-up">
+        Contact Information
+      </h2>
 
-            {user ? (
-              <div className='flex gap-5 flex-col'>
-                <h2 className="font-bold bold ">Contact Information</h2>
-                <div className=''> <p className='capitalize'>{user.name}</p> ({user.email})</div>
-                <h2 className="font-bold bold">Shipping Information</h2>
-                <input
-                className='focus:outline-none focus:ring-2 focus:ring-black'
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  value={formData.address || ''}
-                  onChange={handleFormChange}
-                />
-                <div className="flex gap-4 w-[100%]">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    name="city"
-                    value={formData.city || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                  <input
-                    type="text"
-                    placeholder="Country"
-                    name="country"
-                    value={formData.country || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                  <input
-                    type="text"
-                    placeholder="State"
-                    name="state"
-                    value={formData.state || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="flex gap-5 flex-wrap">
-                <h2 className="font-bold bold">Contact Information</h2>
-                <div className="flex gap-4 w-[100%]">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    value={formData.name || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                  <input
-                    type="text"
-                    placeholder="Phone Number"
-                    name="phoneNo"
-                    value={formData.phoneNo || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                </div>
-                {errors.name && <span className="text-red-500">{errors.name}</span>}
-                {errors.phoneNo && <span className="text-red-500">{errors.phoneNo}</span>}
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email || ''}
-                  onChange={handleFormChange}
-                  className='focus:outline-none focus:ring-2 focus:ring-black'
-                />
-                {errors.email && <span className="text-red-500">{errors.email}</span>}
-                <h2 className="font-bold bold">Shipping Information</h2>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  value={formData.address || ''}
-                  onChange={handleFormChange}
-                  className='focus:outline-none focus:ring-2 focus:ring-black'
-                />
-                <div className="flex gap-4 w-[100%]">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    name="city"
-                    value={formData.city || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                  <input
-                    type="text"
-                    placeholder="Country"
-                    name="country"
-                    value={formData.country || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                  <input
-                    type="text"
-                    placeholder="State"
-                    name="state"
-                    value={formData.state || ''}
-                    onChange={handleFormChange}
-                    className='focus:outline-none focus:ring-2 focus:ring-black'
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="mt-5 flex justify-between bottom-[0] relative bg-white">
-              <button
-                className="w-[100%] bg-black text-center text-white py-2 px-3"
-                onClick={handlePayment}
-              >
-                Make Payment
-              </button>
-            </div>
-          </div>
-
-          <div className="flex-1 md:w-[50%] md:px-14">
-            {cart?.items?.length > 0 && (
-              <div className="h-[100%]">
-                <div className="h-[300px] overflow-y-scroll">
-                  <div className="flex flex-col gap-5 pt-[70px] pb-[50px] px-5 h-[auto]">
-                    {cart.items.map((item) => (
-                      <div className="flex gap-3 items-center pb-2" key={item.id}>
-                        <div className="image w-[80px]">
-                          <img
-                            src={item.img}
-                            alt={item.name}
-                            className="w-[50px] h-[50px] bg-[#f0f0f0] rounded-[15px] p-2"
-                          />
-                        </div>
-                        <div className="desc flex flex-col justify-between gap-2">
-                          <p className="text-base">{item.name}</p>
-                          <p>
-                            {item.quantity} * ₦ {item.price}
-                          </p>
-                        </div>
-                        <div className="ml-auto" onClick={() => dispatch(removeItem(item.itemId))}>
-                          <Delete className="text-[red]" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="gap-5 flex flex-col bg-white py-5 px-5">
-                  <div className="flex flex-row justify-between">
-                    <h3 className="text-xl font-[500]">SUBTOTAL</h3>
-                    <h3 className="text-xl font-[500]">₦ {totalPrice()}</h3>
-                  </div>
-                  <div className="flex flex-row justify-between border-b pb-2">
-                    <h3 className="text-xl font-[500]">Estimated Delivery</h3>
-                    <h3 className="text-xl font-[500]">₦ Free</h3>
-                  </div>
-                  <div className="flex flex-row justify-between border-b pb-2">
-                    <h3 className="text-xl font-[500]">Total</h3>
-                    <h3 className="text-xl font-[500]">₦ {totalPrice()}</h3>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+      <div className="flex gap-5" data-aos="fade-up" data-aos-duration="800">
+        <div className="w-1/2">
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={formData.name || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.name ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+        </div>
+        <div className="w-1/2">
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="phoneNo"
+            value={formData.phoneNo || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.phoneNo ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.phoneNo && <p className="text-red-500 text-sm">{errors.phoneNo}</p>}
         </div>
       </div>
-    </>
+
+      <h2 className="font-bold bold text-2xl mt-8 mb-2" data-aos="fade-up">
+        Shipping Address
+      </h2>
+
+      <div className="flex gap-5" data-aos="fade-up" data-aos-duration="800">
+        <div className="w-1/2">
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formData.email || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.email ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+        </div>
+        <div className="w-1/2">
+          <input
+            type="text"
+            placeholder="Address"
+            name="address"
+            value={formData.address || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.address ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
+        </div>
+      </div>
+
+      <div className="flex gap-5" data-aos="fade-up" data-aos-duration="800">
+        <div className="w-1/3">
+          <input
+            type="text"
+            placeholder="City"
+            name="city"
+            value={formData.city || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.city ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
+        </div>
+        <div className="w-1/3">
+          <input
+            type="text"
+            placeholder="Country"
+            name="country"
+            value={formData.country || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.country ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.country && <p className="text-red-500 text-sm">{errors.country}</p>}
+        </div>
+        <div className="w-1/3">
+          <input
+            type="text"
+            placeholder="State"
+            name="state"
+            value={formData.state || ''}
+            onChange={handleFormChange}
+            className={`w-full border p-2 focus:outline-none ${
+              errors.state ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.state && <p className="text-red-500 text-sm">{errors.state}</p>}
+        </div>
+      </div>
+
+      <h2 className="font-bold bold text-2xl mt-8 mb-2" data-aos="fade-up">
+        Order Summary
+      </h2>
+
+      <div className="flex justify-between items-center" >
+        <div className="flex items-center gap-2">
+          <h3 className="font-bold">{cart.items.length} Items</h3>
+          <span className="text-gray-500">- {totalPrice()} NGN</span>
+        </div>
+        <h3 className="font-bold">{totalPrice()} NGN</h3>
+      </div>
+
+      <div className="flex justify-center mb-10" >
+  
+          <button className="button-primary  bg-black text-white mt-8 py-2 px-3"
+            onClick={handlePayment}
+            >Proceed to Payment</button>
+      </div>
+    </div>
+  </>
   );
 };
 
 export default Checkout;
+
+
+
+
+
+
+
+{/* <div className="mt-5 flex justify-between bottom-[0] relative bg-white">
+<button
+  className="w-[100%] bg-black text-center text-white py-2 px-3"
+  onClick={handlePayment}
+>
+  Make Payment
+</button>
+</div> */}

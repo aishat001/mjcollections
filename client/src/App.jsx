@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux'
 import About from './pages/about/About'
 import Checkout from './pages/checkout/Checkout'
 import Success from './pages/success/Success'
+import Rotate from './pages/rotate/rotate'
 
 
 
@@ -42,6 +43,9 @@ function App() {
         <Route
           path='/success/:id'
           element={<Success />} />
+                  <Route
+          path='/rotate'
+          element={<Rotate />} />
       <Route path='/' element={<Layout />}>
 
         <Route

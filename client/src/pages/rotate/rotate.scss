@@ -1,0 +1,28 @@
+// .image-container {
+//     perspective: 1000px; /* Adjust the perspective value as needed */
+//   }
+  
+//   .image-container img {
+//     width: 200px; /* Adjust the image size as needed */
+//     transform-style: preserve-3d;
+//     animation: rotate 10s infinite linear; /* Adjust the animation duration and timing function as needed */
+//   }
+  
+//   @keyframes rotate {
+//     from {
+//       transform: rotateY(0deg); /* Initial rotation angle */
+//     }
+//     to {
+//       transform: rotateY(360deg); /* Final rotation angle */
+//     }
+//   }
+.image-container {
+    perspective: 1000px; /* Adjust the perspective for desired depth effect */
+  }
+  
+  .image {
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+  }

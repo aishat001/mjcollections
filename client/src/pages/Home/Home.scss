@@ -1,0 +1,21 @@
+.image-container {
+    perspective: 1000px; /* Adjust the perspective value as needed */
+  }
+  
+  .image-container img {
+    width: 200px; /* Adjust the image size as needed */
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear; /* Adjust the animation duration and timing function as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
+
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg); /* Initial rotation angle */
+    }
+    to {
+      transform: rotateY(360deg); /* Final rotation angle */
+    }
+  }
+  

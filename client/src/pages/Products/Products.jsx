@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom'; // Assuming you're using react-router-dom
 import List from '../../components/List/List';
 import useFetch from '../../hooks/useFetch';
 
 const Products = () => {
-  // Extract the "id" parameter from the URL using useParams
   const { id } = useParams();
-  
-  // State variables
+
   const [sort, setSort] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Filter by');
   const [selectedSort, setSelectedSort] = useState('Sort By');
@@ -15,7 +13,6 @@ const Products = () => {
   const [filterDropdown2, setFilterDropdown2] = useState(false);
   const [displayedProducts, setDisplayedProducts] = useState(10);
 
-  // List of categories
   const categories = [
     { id: 1, title: 'All Categories' },
     { id: 2, title: 'Backpack Design' },
@@ -24,10 +21,33 @@ const Products = () => {
     { id: 5, title: 'XX Rope Design' },
   ];
 
+  const filterDropdownRef = useRef(null);
+  const filterDropdown2Ref = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        filterDropdownRef.current &&
+        !filterDropdownRef.current.contains(event.target) &&
+        filterDropdown2Ref.current &&
+        !filterDropdown2Ref.current.contains(event.target)
+      ) {
+        setFilterDropdown(false);
+        setFilterDropdown2(false);
+      }
+    };
+
+    window.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className="w-[90vw] m-auto min-h-[500px]">
       <div className="flex flex-col py-10 gap-2">
-        <div className="pt-16 sticky left flex-[1] flex flex-row gap-5">
+        <div className="pt-16 sticky left flex-[1] flex flex-row gap-5 z-[99]">
           <div>
             <span
               onClick={() => setFilterDropdown(!filterDropdown)}
@@ -50,13 +70,18 @@ const Products = () => {
             </span>
 
             {filterDropdown && (
-              <div className='absolute bg-[black] text-white p-5 z-[9]'>
+              <div
+                ref={filterDropdownRef}
+                className="absolute bg-[black] text-white p-5 z-[99]"
+              >
                 {categories.map((category) => (
                   <p
                     key={category.id}
-                    onClick={() => {setSelectedCategory(category.title)
-                         setFilterDropdown(!filterDropdown)}}
-                    className='text-[16px]'
+                    onClick={() => {
+                      setSelectedCategory(category.title);
+                      setFilterDropdown(false);
+                    }}
+                    className="text-[16px]"
                   >
                     {category.title}
                   </p>
@@ -87,41 +112,55 @@ const Products = () => {
             </span>
 
             {filterDropdown2 && (
-              <div className='absolute bg-[black] text-white p-5 z-[9]'>
-              <div>
-                  <input
-                    type="radio"
-                    id="asc"
-                    name="sort"
-                    value="asc"
-                    onChange={() => setSort('asc')}
-                  />
-                  <label htmlFor="asc">Price (Lowest first)</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="desc"
-                    name="sort"
-                    value="desc"
-                    onChange={() => setSort('desc')}
-                  />
-                  <label htmlFor="desc">Price (Highest first)</label>
-                </div>
+              <div
+                ref={filterDropdown2Ref}
+                className="absolute bg-[black] text-white p-5 z-[99]"
+              >
+                <p
+                  onClick={() => {
+                    setSelectedSort('Sort By');
+                    setFilterDropdown2(false);
+                  }}
+                  className="text-[16px]"
+                >
+                  Sort By
+                </p>
+                <p
+                  onClick={() => {
+                    setSelectedSort('Price Low to High');
+                    setFilterDropdown2(false);
+                  }}
+                  className="text-[16px]"
+                >
+                  Price Low to High
+                </p>
+                <p
+                  onClick={() => {
+                    setSelectedSort('Price High to Low');
+                    setFilterDropdown2(false);
+                  }}
+                  className="text-[16px]"
+                >
+                  Price High to Low
+                </p>
               </div>
             )}
           </div>
         </div>
-<hr></hr>
+        <hr/>
         <div className="right flex-[4]">
           <h2 className="font-[600] text-2xl pb-10">ALL BAGS</h2>
           <div className="flex flex-col flex-wrap gap-4 justify-start">
-            <List sort={sort} selectedCategory={selectedCategory} displayedProducts={displayedProducts}/>
+            <List sort={sort} selectedCategory={selectedCategory} displayedProducts={displayedProducts} />
           </div>
 
           <button
             onClick={() => setDisplayedProducts(displayedProducts + 2)}
-            className='bg-black text-white p-2 flex m-auto my-14'>Load More</button>
+            data-aos="fade-up"
+            className='bg-black text-white p-2 flex m-auto my-14'
+          >
+            Load More
+          </button>
         </div>
       </div>
     </div>
